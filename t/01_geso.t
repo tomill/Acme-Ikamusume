@@ -24,6 +24,11 @@ run {
 };
 
 __DATA__
+=== SYNOPSIS
+--- input:    イカ娘です。perlで侵略しませんか？
+--- expected: イカ娘でゲソ。perlで侵略しなイカ？
+
+
 === IKA: replace
 --- input:    以下のように
 --- expected: イカのように
@@ -117,6 +122,101 @@ __DATA__
 --- input:    走るか？
 --- expected: 走らなイカ？
 --- SKIP
+
+
+=== IKA: inflection 五段
+--- input:    歩きませんか？
+--- expected: 歩かなイカ？
+=== IKA: inflection 五段
+--- input:    泳ぎませんか？
+--- expected: 泳がなイカ？
+=== IKA: inflection 五段
+--- input:    探しませんか？
+--- expected: 探さなイカ？
+=== IKA: inflection 五段
+--- input:    勝ちませんか？
+--- expected: 勝たなイカ？
+=== IKA: inflection 五段
+--- input:    死にませんか？
+--- expected: 死ななイカ？
+=== IKA: inflection 五段
+--- input:    遊びませんか？
+--- expected: 遊ばなイカ？
+=== IKA: inflection 五段
+--- input:    知りませんか？
+--- expected: 知らなイカ？
+=== IKA: inflection 五段
+--- input:    笑いませんか？
+--- expected: 笑わなイカ？
+
+=== IKA: inflection 上一段
+--- input:    いませんか？
+--- expected: いなイカ？
+=== IKA: inflection 上一段
+--- input:    起きませんか？
+--- expected: 起きなイカ？
+=== IKA: inflection 上一段
+--- input:    すぎませんか？
+--- expected: すぎなイカ？
+=== IKA: inflection 上一段
+--- input:    閉じませんか？
+--- expected: 閉じなイカ？
+=== IKA: inflection 上一段
+--- input:    落ちませんか？
+--- expected: 落ちなイカ？
+=== IKA: inflection 上一段
+--- input:    浴びませんか？
+--- expected: 浴びなイカ？
+=== IKA: inflection 上一段
+--- input:    しみませんか？
+--- expected: しみなイカ？
+=== IKA: inflection 上一段
+--- input:    ふりませんか？
+--- expected: ふらなイカ？
+
+=== IKA: inflection 下一段
+--- input:    見えませんか？
+--- expected: 見えなイカ？
+=== IKA: inflection 下一段
+--- input:    受けませんか？
+--- expected: 受けなイカ？
+=== IKA: inflection 下一段
+--- input:    告げませんか？
+--- expected: 告げなイカ？
+=== IKA: inflection 下一段
+--- input:    見せませんか？
+--- expected: 見せなイカ？
+=== IKA: inflection 下一段
+--- input:    混ぜませんか？
+--- expected: 混ぜなイカ？
+=== IKA: inflection 下一段
+--- input:    捨てませんか？
+--- expected: 捨てなイカ？
+=== IKA: inflection 下一段
+--- input:    茹でませんか？
+--- expected: 茹でなイカ？
+=== IKA: inflection 下一段
+--- input:    寝ませんか？
+--- expected: 寝なイカ？
+=== IKA: inflection 下一段
+--- input:    経ませんか？
+--- expected: 経なイカ？
+=== IKA: inflection 下一段
+--- input:    食べませんか？
+--- expected: 食べなイカ？
+=== IKA: inflection 下一段
+--- input:    求めませんか？
+--- expected: 求めなイカ？
+=== IKA: inflection 下一段
+--- input:    入れませんか？
+--- expected: 入れなイカ？
+
+=== IKA: inflection カ変
+--- input:    来ませんか？
+--- expected: 来なイカ？
+=== IKA: inflection サ変
+--- input:    しませんか？
+--- expected: しなイカ？
 
 
 === GESO: eos

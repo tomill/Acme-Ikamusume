@@ -51,6 +51,23 @@ sub rules {
             NEXT;
         }
     },
+    
+    # IKA: inflection
+    'node' => sub {
+        my ($self, $node, $words) = @_;
+        my $flag = $node->features->{extra2} || "";
+        return NEXT if $flag ne 'inflection';
+        return NEXT if $node->prev->features->{pos} ne '動詞';
+
+        if ($node->prev->features->{inflect} =~ /五段/) {
+            $words->[PREV] = _inflect_5step($words->[PREV], 'i' => 'a');
+            $words->[CURR] = 'なイカ';
+        } elsif ($node->prev->features->{inflect} =~ /一段|カ変|サ変/) {
+            $words->[CURR] = 'なイカ';
+        }
+        
+        NEXT;
+    },
 
     # IKA: replace
     'node' => sub {
@@ -103,6 +120,21 @@ sub rules {
         NEXT;
     },
 
+}
+
+sub _inflect_5step {
+    my ($verb, $from, $to) = @_;
+    if (my ($kana) = $verb =~ /(\p{InHiragana})$/) {
+        $kana = Lingua::JA::Kana::kana2romaji($kana);
+        $kana =~ s/^sh/s/;
+        $kana =~ s/^ch/t/;
+        $kana =~ s/$from$/$to/;
+        $kana = 'wa' if $kana eq 'a';
+        $kana = Lingua::JA::Kana::romaji2hiragana($kana);
+    
+        $verb =~ s/.$/$kana/;
+    }
+    $verb;
 }
 
 1;
