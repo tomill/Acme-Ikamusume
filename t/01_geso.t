@@ -219,6 +219,14 @@ __DATA__
 --- expected: しなイカ？
 
 
+=== IKA: inflection ましょう
+--- input:    しましょう！
+--- expected: しなイカ！
+=== IKA: inflection ましょうよ
+--- input:    しましょうよ！
+--- expected: しなイカ！
+
+
 === GESO: eos
 --- input:    わかった。
 --- expected: わかったでゲソ。
