@@ -9,11 +9,18 @@ binmode Test::More->builder->$_ => ':utf8'
 
 use Acme::Ikamusume;
 
+filters { match => 'regexp' };
+
 run {
     my $block = shift;
     
     my $output = Acme::Ikamusume->geso($block->input);
-    is($output, $block->expected);
+    
+    if ($block->match) {
+        like($output, $block->match);
+    } else {
+        is($output, $block->expected);
+    }
 };
 
 __DATA__
@@ -76,3 +83,14 @@ __DATA__
 === GESO: eos
 --- input:    なんと？　あああ　びっくり！
 --- expected: なんとでゲソ？　あああ　びっくりでゲソ！
+
+
+=== EBI: accent
+--- input: 海老蔵が入院した
+--- match: 海老.+蔵が入院した
+=== EBI: accent
+--- input: えびな市
+--- match: えび.+な市
+=== EBI: accent
+--- input: 今日はエビフライ
+--- match: 今日はエビ.+フライ

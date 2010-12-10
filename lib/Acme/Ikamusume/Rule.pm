@@ -83,6 +83,16 @@ sub rules {
         NEXT;
     },
 
+    # EBI: accent
+    'node' => sub {
+        my ($self, $node, $words) = @_;
+        $words->[CURR] =~ s{^(.*エビ|えび|海老)(.*)$}{
+            my @accent = qw(! !! ！！  ！  ♪ ♪ ♪♪);
+            join ("", $1, do { $accent[ int rand scalar @accent ] }, $2);
+        }e;
+        NEXT;
+    },
+
 }
 
 1;
