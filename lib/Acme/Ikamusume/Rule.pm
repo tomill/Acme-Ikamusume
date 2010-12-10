@@ -45,16 +45,25 @@ sub rules {
     # IKA: inflection
     'node.has_extra' => sub {
         my ($self, $node, $words) = @_;
-        my $flag = $node->features->{extra}[1] || "";
-        return NEXT if $flag ne 'inflection';
-        
-        if ($node->prev->features->{inflect} =~ /五段/) {
-            $words->[PREV] = _inflect_5step($words->[PREV], 'i' => 'a');
-            $words->[CURR] = 'なイカ';
-        } elsif ($node->prev->features->{inflect} =~ /一段|カ変|サ変/) {
-            $words->[CURR] = 'なイカ';
+        if (($node->features->{extra}[1] || "") eq 'inflection') {
+            if ($node->prev->features->{inflect} =~ /五段/) {
+                $words->[PREV] = _inflect_5step($words->[PREV], 'i' => 'a');
+                $words->[CURR] = 'なイカ';
+            } elsif ($node->prev->features->{inflect} =~ /一段|カ変|サ変/) {
+                $words->[CURR] = 'なイカ';
+            }
         }
-        
+        NEXT;
+    },
+    
+    # formal MASU to casual
+    'node.readable' => sub {
+        my ($self, $node, $words) = @_;
+        if ($words->[CURR] eq 'ます' and $node->features->{pos} eq '助動詞' and
+            $node->prev->features->{pos} eq '動詞') {
+            $words->[PREV] = $node->prev->features->{original};
+            $words->[CURR] = '';
+        }
         NEXT;
     },
 
@@ -75,14 +84,13 @@ sub rules {
     # IKA/GESO: postp KA
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
-        unless ($words->[CURR] eq 'か' and $node->features->{category1} =~ /終助詞/) {
-            return NEXT;
-        }
-        if ($node->prev->features->{pos} eq '名詞') {
-            $words->[CURR] = 'じゃなイカ';
-        }
-        if ($node->prev->features->{pos} eq '副詞') {
-            $words->[CURR] = 'でゲソか';
+        if ($words->[CURR] eq 'か' and $node->features->{category1} =~ /終助詞/) {
+            if ($node->prev->features->{pos} eq '名詞') {
+                $words->[CURR] = 'じゃなイカ';
+            }
+            if ($node->prev->features->{pos} eq '副詞') {
+                $words->[CURR] = 'でゲソか';
+            }
         }
         NEXT;
     },
@@ -116,8 +124,11 @@ sub _inflect_5step {
         $kana = Lingua::JA::Kana::kana2romaji($kana);
         $kana =~ s/^sh/s/;
         $kana =~ s/^ch/t/;
+        $kana =~ s/^ts/t/;
         $kana =~ s/$from$/$to/;
-        $kana = 'wa' if $kana eq 'a';
+        $kana =~ s/^a$/wa/;
+        $kana =~ s/ti/chi/;
+        $kana =~ s/tu/tsu/;
         $kana = Lingua::JA::Kana::romaji2hiragana($kana);
     
         $verb =~ s/.$/$kana/;

@@ -254,3 +254,20 @@ __DATA__
 === EBI: accent
 --- input: 今日はエビフライ
 --- match: 今日はエビ.+フライ
+
+
+=== formal MASU to casual 五段
+--- input:    今やります。
+--- expected: 今やるでゲソ。
+=== formal MASU to casual 上一段
+--- input:    います。
+--- expected: いるでゲソ。
+=== formal MASU to casual 下一段
+--- input:    見えます。
+--- expected: 見えるでゲソ。
+=== formal MASU to casual カ変
+--- input:    来ます。
+--- expected: 来るでゲソ。
+=== formal MASU to casual サ変
+--- input:    します。
+--- expected: するでゲソ。
