@@ -40,7 +40,9 @@ sub geso {
         ) {
             next if $node->stat =~ /[23]/; # skip MECAB_(BOS|EOS)_NODE
             push @words, $node->surface;
-            $self->call_trigger(node => ($node, \@words));
+            $self->call_trigger('node' => ($node, \@words));
+            $self->call_trigger('node.has_extra' => ($node, \@words)) if $node->features->{extra};
+            $self->call_trigger('node.readable'  => ($node, \@words)) if $node->features->{yomi};
         }
         
         push @result, @words;

@@ -34,7 +34,7 @@ sub rules {
     },
     
     # use userdic extra field
-    'node' => sub {
+    'node.has_extra' => sub {
         my ($self, $node, $words) = @_;
         if (my $word = $node->features->{extra}[0]) {
             $words->[CURR] = $word;
@@ -42,23 +42,12 @@ sub rules {
         NEXT;
     },
     
-    # readable only
-    'node' => sub {
-        my ($self, $node, $words) = @_;
-        if (not $node->features->{yomi} or $node->features->{pos} eq '記号') {
-            LAST;
-        } else {
-            NEXT;
-        }
-    },
-    
     # IKA: inflection
-    'node' => sub {
+    'node.has_extra' => sub {
         my ($self, $node, $words) = @_;
         my $flag = $node->features->{extra}[1] || "";
         return NEXT if $flag ne 'inflection';
-        return NEXT if $node->prev->features->{pos} ne '動詞';
-
+        
         if ($node->prev->features->{inflect} =~ /五段/) {
             $words->[PREV] = _inflect_5step($words->[PREV], 'i' => 'a');
             $words->[CURR] = 'なイカ';
@@ -70,7 +59,7 @@ sub rules {
     },
 
     # IKA: replace
-    'node' => sub {
+    'node.readable' => sub {
         my ($self, $node, $words) = @_;
         my $curr = katakana2hiragana($node->features->{yomi});
         my $next = katakana2hiragana($node->next->features->{yomi} || "");
@@ -84,7 +73,7 @@ sub rules {
     },
     
     # IKA/GESO: postp KA
-    'node' => sub {
+    'node.readable' => sub {
         my ($self, $node, $words) = @_;
         unless ($words->[CURR] eq 'か' and $node->features->{category1} =~ /終助詞/) {
             return NEXT;
@@ -99,19 +88,18 @@ sub rules {
     },
     
     # GESO: eos
-    'node' => sub {
+    'node.readable' => sub {
         my ($self, $node, $words) = @_;
         if ($node->next->features->{pos} eq '記号' and
             $node->next->features->{category1} =~ /一般|句点/) {
             return if join('', @$words) =~ /(?:ゲソ|イカ).{0,5}$/;
             push @$words, 'でゲソ';
         }
-
         NEXT;
     },
-
+    
     # EBI: accent
-    'node' => sub {
+    'node.readable' => sub {
         my ($self, $node, $words) = @_;
         $words->[CURR] =~ s{^(.*エビ|えび|海老)(.*)$}{
             my @accent = qw(! !! ！！  ！  ♪ ♪ ♪♪);
