@@ -4,11 +4,14 @@ all_from 'lib/Acme/Ikamusume.pm';
 requires 'Carp';
 requires 'Class::Trigger';
 requires 'Encode';
+requires 'File::ShareDir';
 requires 'Lingua::JA::Kana';
 requires 'Text::MeCab';
 
 test_requires 'Test::More' => 0.94; # subtest
 use_test_base;
+
+install_share;
 
 author_tests 'xt';
 

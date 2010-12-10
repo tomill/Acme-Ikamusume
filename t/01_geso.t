@@ -47,6 +47,23 @@ __DATA__
 --- expected: 侵略しなイカと
 
 
+=== GESO: userdic
+--- input:    イカ娘です。
+--- expected: イカ娘でゲソ。
+=== GESO: userdic
+--- input:    イカ娘ですから、
+--- expected: イカ娘でゲソから、
+=== IKA: userdic
+--- input:    イカ娘ですか？
+--- expected: イカ娘じゃなイカ？
+=== IKA: userdic
+--- input:    イカ娘ですね。
+--- expected: イカ娘じゃなイカ。
+=== IKA: usedic
+--- input:    イカ娘でしょうか？
+--- expected: イカ娘じゃなイカ？
+
+
 === IKA/GESO: postp KA 名詞+
 --- input:    お店か
 --- expected: お店じゃなイカ

@@ -19,6 +19,7 @@ sub set_rules {
 
 use constant NEXT => 1;     # for trigger control
 use constant LAST => undef; # ditto
+
 use constant CURR => -1;    # for array accessor
 use constant PREV => -2;    # ditto
 
@@ -30,6 +31,15 @@ sub rules {
         return NEXT unless $ENV{DEBUG};
         use YAML;
         warn Dump [ $node->surface, $node->features ];
+    },
+    
+    # use userdic extra field
+    'node' => sub {
+        my ($self, $node, $words) = @_;
+        if (my $word = $node->features->{extra}) {
+            $words->[CURR] = $word;
+        }
+        NEXT;
     },
     
     # readable only

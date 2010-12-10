@@ -5,6 +5,7 @@ use warnings;
 our $VERSION = '0.01';
 use Carp;
 use Class::Trigger;
+use File::ShareDir;
 
 use Acme::Ikamusume::MAParser;
 use Acme::Ikamusume::Rule;
@@ -20,7 +21,10 @@ sub geso {
     return "" unless $input;
     $self = $self->new unless ref $self;
 
-    my $parser = Acme::Ikamusume::MAParser->new();
+    my $parser = Acme::Ikamusume::MAParser->new({
+        userdic => File::ShareDir::dist_file('Acme-Ikamusume', 'ika.dic'),
+    });
+    
     my @result;
     for my $text (split /(\s+)/, $input) {
         if ($text =~ /\s/) {
