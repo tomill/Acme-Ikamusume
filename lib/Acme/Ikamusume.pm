@@ -56,29 +56,30 @@ __END__
 
 =head1 NAME
 
-Acme::Ikamusume -
+Acme::Ikamusume - The invader comes from the bottom of the sea!
 
 =head1 SYNOPSIS
 
   use Acme::Ikamusume;
+  use utf8;
+  Acme::Ikamusume->geso('イカ娘です。perlで侵略しませんか？');
+  # => イカ娘でゲソ。perlで侵略しなイカ？
 
 =head1 DESCRIPTION
 
-Acme::Ikamusume is
+Acme::Ikamusume module converts text to Ikamusume like talk.
+Ikamusume, meaning "Squid-Girl", she is a cute Japanese comic/manga
+character (L<http://www.ika-musume.com/>).
 
 =head1 METHODS
 
 =over 4
 
-=item new
+=item Acme::Ikamusume->geso( $text )
 
-=item foo
+About how the conversion, please see L<Acme::Ikamusume::Rule> and t/01_geso.t.
 
 =back
-
-=head1 SEE ALSO
-
-L<Acme::Ikamusume>
 
 =head1 AUTHOR
 

@@ -16,6 +16,7 @@ run {
     
     my $output = Acme::Ikamusume->geso($block->input);
     my $title = $block->name ."\n       input:  ". $block->input;
+    
     if ($block->match) {
         like($output, $block->match, $title);
     } else {

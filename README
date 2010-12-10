@@ -1,11 +1,26 @@
-This is Perl module Acme::Ikamusume.
+NAME
+    Acme::Ikamusume - The invader comes from the bottom of the sea!
 
-DOCUMENTATION
+SYNOPSIS
+      use Acme::Ikamusume;
+      use utf8;
+      Acme::Ikamusume->geso('イカ娘です。perlで侵略しませんか？');
+      # => イカ娘でゲソ。perlで侵略しなイカ？
 
-Acme::Ikamusume documentation is available as in POD. So you can do:
+DESCRIPTION
+    Acme::Ikamusume module converts text to Ikamusume like talk. Ikamusume,
+    meaning "Squid-Girl", she is a cute Japanese comic/manga character
+    (<http://www.ika-musume.com/>).
 
-    % perldoc Acme::Ikamusume
+METHODS
+    Acme::Ikamusume->geso( $text )
+        About how the conversion, please see Acme::Ikamusume::Rule and
+        t/01_geso.t.
 
-to read the documentation online with your favorite pager.
+AUTHOR
+    Naoki Tomita <tomita@cpan.org>
 
-Naoki Tomita
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+

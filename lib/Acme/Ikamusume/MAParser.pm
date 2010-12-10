@@ -25,12 +25,16 @@ package Text::MeCab::Node;
 }
 
 sub features {
-    my %f; @f{qw(
+    my %f;
+    
+    @f{qw(
         pos category1 category2 category3
         inflect inflect_type original yomi pronounse
         extra
     )} = split(/,/, shift->feature, 10);
+    
     $f{extra} = [ split /,/, $f{extra} || "" ];
+    
     \%f;
 };
 
