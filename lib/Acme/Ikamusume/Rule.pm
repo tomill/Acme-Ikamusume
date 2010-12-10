@@ -36,7 +36,7 @@ sub rules {
     # use userdic extra field
     'node' => sub {
         my ($self, $node, $words) = @_;
-        if (my $word = $node->features->{extra}) {
+        if (my $word = $node->features->{extra}[0]) {
             $words->[CURR] = $word;
         }
         NEXT;
@@ -45,7 +45,7 @@ sub rules {
     # readable only
     'node' => sub {
         my ($self, $node, $words) = @_;
-        if (not $node->features->{yomikana} or $node->features->{pos} eq '記号') {
+        if (not $node->features->{yomi} or $node->features->{pos} eq '記号') {
             LAST;
         } else {
             NEXT;
@@ -55,7 +55,7 @@ sub rules {
     # IKA: inflection
     'node' => sub {
         my ($self, $node, $words) = @_;
-        my $flag = $node->features->{extra2} || "";
+        my $flag = $node->features->{extra}[1] || "";
         return NEXT if $flag ne 'inflection';
         return NEXT if $node->prev->features->{pos} ne '動詞';
 
@@ -72,9 +72,9 @@ sub rules {
     # IKA: replace
     'node' => sub {
         my ($self, $node, $words) = @_;
-        my $curr = katakana2hiragana($node->features->{yomikana});
-        my $next = katakana2hiragana($node->next->features->{yomikana} || "");
-        my $prev = katakana2hiragana($node->prev->features->{yomikana} || "");
+        my $curr = katakana2hiragana($node->features->{yomi});
+        my $next = katakana2hiragana($node->next->features->{yomi} || "");
+        my $prev = katakana2hiragana($node->prev->features->{yomi} || "");
         
         $words->[CURR] = $curr if $curr =~ s/いか/イカ/g;
         $words->[CURR] = $curr if $curr =~ s/い$/イ/ && $next =~ /^か/;
