@@ -25,13 +25,13 @@ use constant PREV => -2;    # ditto
 
 sub rules {
     
-    # debug
-    'node' => sub {
-        my ($self, $node, $words) = @_;
-        return NEXT unless $ENV{DEBUG};
-        use YAML;
-        warn Dump [ $node->surface, $node->features ];
-    },
+#     # debug
+#     'node' => sub {
+#         my ($self, $node, $words) = @_;
+#         return NEXT unless $ENV{DEBUG};
+#         use YAML;
+#         warn Dump [ $node->surface, $node->features ];
+#     },
     
     # use userdic extra field
     'node.has_extra' => sub {
