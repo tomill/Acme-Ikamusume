@@ -56,6 +56,21 @@ sub rules {
         NEXT;
     },
     
+    # IKA/GESO: postp KA
+    'node' => sub {
+        my ($self, $node, $words) = @_;
+        unless ($words->[CURR] eq 'か' and $node->features->{category1} =~ /終助詞/) {
+            return NEXT;
+        }
+        if ($node->prev->features->{pos} eq '名詞') {
+            $words->[CURR] = 'じゃなイカ';
+        }
+        if ($node->prev->features->{pos} eq '副詞') {
+            $words->[CURR] = 'でゲソか';
+        }
+        NEXT;
+    },
+    
     # GESO: eos
     'node' => sub {
         my ($self, $node, $words) = @_;

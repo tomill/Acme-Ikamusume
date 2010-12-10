@@ -40,6 +40,26 @@ __DATA__
 --- expected: 侵略しなイカと
 
 
+=== IKA/GESO: postp KA 名詞+
+--- input:    お店か
+--- expected: お店じゃなイカ
+=== IKA/GESO: postp KA 名詞+
+--- input:    お店かな
+--- expected: お店じゃなイカな
+=== IKA/GESO: postp KA 副詞+
+--- input:    まだか
+--- expected: まだでゲソか
+=== IKA/GESO: postp KA 副詞+
+--- input:    まだかな
+--- expected: まだでゲソかな
+=== IKA/GESO: postp KA 動詞+
+--- input:    走るか？
+--- expected: 走るかでゲソ？
+=== IKA/GESO: postp KA 動詞+
+--- input:    走るか？
+--- expected: 走らなイカ？
+--- SKIP
+
 
 === GESO: eos
 --- input:    わかった。
