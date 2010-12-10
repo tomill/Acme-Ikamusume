@@ -1,0 +1,11 @@
+This is Perl module Acme::Ikamusume.
+
+DOCUMENTATION
+
+Acme::Ikamusume documentation is available as in POD. So you can do:
+
+    % perldoc Acme::Ikamusume
+
+to read the documentation online with your favorite pager.
+
+Naoki Tomita
