@@ -15,11 +15,11 @@ run {
     my $block = shift;
     
     my $output = Acme::Ikamusume->geso($block->input);
-    
+    my $title = $block->name ."\n       input:  ". $block->input;
     if ($block->match) {
-        like($output, $block->match);
+        like($output, $block->match, $title);
     } else {
-        is($output, $block->expected);
+        is($output, $block->expected, $title);
     }
 };
 
@@ -59,6 +59,9 @@ __DATA__
 === IKA: userdic
 --- input:    イカ娘ですね。
 --- expected: イカ娘じゃなイカ。
+=== IKA: userdic
+--- input:    イカ娘ですよね。
+--- expected: イカ娘じゃなイカ。
 === IKA: usedic
 --- input:    イカ娘でしょうか？
 --- expected: イカ娘じゃなイカ？
@@ -76,23 +79,37 @@ __DATA__
 === IKA: userdic
 --- input:    イカ娘だね
 --- expected: イカ娘じゃなイカ
+=== IKA: userdic
+--- input:    イカ娘だよね
+--- expected: イカ娘じゃなイカ
 === IKA: userdic (+ IKA replace)
 --- input:    イカ娘だろうか。
 --- expected: イカ娘じゃなイカ。
 
 
+=== GESO: userdic
+--- input:    イカ娘である
+--- expected: イカ娘でゲソ
+=== GESO: userdic
+--- input:    イカ娘であるが、
+--- expected: イカ娘でゲソが、
+=== GESO: userdic
+--- input:    イカ娘で、あるが、
+--- expected: イカ娘で、あるが、
+=== IKA: userdic
+--- input:    そうかな。
+--- expected: そうじゃなイカ。
+=== IKA: userdic
+--- input:    そうかなと。
+--- expected: そうじゃなイカと。
+
+
 === IKA/GESO: postp KA 名詞+
 --- input:    お店か
 --- expected: お店じゃなイカ
-=== IKA/GESO: postp KA 名詞+
---- input:    お店かな
---- expected: お店じゃなイカな
 === IKA/GESO: postp KA 副詞+
 --- input:    まだか
 --- expected: まだでゲソか
-=== IKA/GESO: postp KA 副詞+
---- input:    まだかな
---- expected: まだでゲソかな
 === IKA/GESO: postp KA 動詞+
 --- input:    走るか？
 --- expected: 走るかでゲソ？
