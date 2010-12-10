@@ -23,7 +23,6 @@ __DATA__
 === IKA: replace
 --- input:    海からの使者、イカ娘でゲソ
 --- expected: 海からの使者、イカ娘でゲソ
---- ONLY
 === IKA: replace
 --- input:    西瓜が一つ
 --- expected: すイカが一つ
@@ -39,3 +38,21 @@ __DATA__
 === IKA: replace
 --- input:    侵略しないかと
 --- expected: 侵略しなイカと
+
+
+
+=== GESO: eos
+--- input:    わかった。
+--- expected: わかったでゲソ。
+=== GESO: eos
+--- input:    わかったでゲソ。
+--- expected: わかったでゲソ。
+=== GESO: eos
+--- input:    いいじゃなイカ。
+--- expected: いいじゃなイカ。
+=== GESO: eos
+--- input:    今日は、いい天気。
+--- expected: 今日は、いい天気でゲソ。
+=== GESO: eos
+--- input:    なんと？　あああ　びっくり！
+--- expected: なんとでゲソ？　あああ　びっくりでゲソ！

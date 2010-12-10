@@ -24,6 +24,14 @@ use constant PREV => -2;    # ditto
 
 sub rules {
     
+    # debug
+    'node' => sub {
+        my ($self, $node, $words) = @_;
+        return NEXT unless $ENV{DEBUG};
+        use YAML;
+        warn Dump [ $node->surface, $node->features ];
+    },
+    
     # readable only
     'node' => sub {
         my ($self, $node, $words) = @_;
@@ -47,6 +55,19 @@ sub rules {
         
         NEXT;
     },
+    
+    # GESO: eos
+    'node' => sub {
+        my ($self, $node, $words) = @_;
+        if ($node->next->features->{pos} eq '記号' and
+            $node->next->features->{category1} =~ /一般|句点/) {
+            return if join('', @$words) =~ /(?:ゲソ|イカ).{0,5}$/;
+            push @$words, 'でゲソ';
+        }
+
+        NEXT;
+    },
+
 }
 
 1;
