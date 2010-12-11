@@ -1,5 +1,9 @@
 Revision history for Perl extension Acme::Ikamusume
 
+0.03  Sat Dec 11 23:25:15 JST 2010
+        - add ONUSHI to userdic
+        - typo fix
+
 0.02  Sat Dec 11 15:04:11 JST 2010
         - first release
 
