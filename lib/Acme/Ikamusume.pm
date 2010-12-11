@@ -73,7 +73,7 @@ Acme::Ikamusume module converts text to Ikamusume like talk.
 Ikamusume, meaning "Squid-Girl", she is a cute Japanese comic/manga
 character (L<http://www.ika-musume.com/>).
 
-Try this module here: L<http://ika.koneta.org/>. enjoi!
+Try this module here: L<http://ika.koneta.org/>. enjoy!
 
 =head1 METHODS
 
