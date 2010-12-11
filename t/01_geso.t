@@ -271,3 +271,18 @@ __DATA__
 === formal MASU to casual サ変
 --- input:    します。
 --- expected: するでゲソ。
+
+
+=== userdic: お主
+--- input:    あなたは
+--- expected: お主は
+=== userdic: お主
+--- input:    あんたは
+--- expected: お主は
+=== userdic: お主
+--- input:    お前は
+--- expected: お主は
+=== userdic: お主
+--- input:    君は
+--- expected: お主は
+
