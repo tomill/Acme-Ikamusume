@@ -280,9 +280,23 @@ __DATA__
 --- input:    あんたは
 --- expected: お主は
 === userdic: お主
+--- input:    貴方は
+--- expected: お主は
+=== userdic: お主
 --- input:    お前は
+--- expected: お主は
+=== userdic: お主
+--- input:    おまえは
+--- expected: お主は
+=== userdic: お主
+--- input:    そちは
 --- expected: お主は
 === userdic: お主
 --- input:    君は
 --- expected: お主は
-
+=== userdic: お主
+--- input:    キミは
+--- expected: お主は
+=== userdic: お主
+--- input:    きみは
+--- expected: お主は
