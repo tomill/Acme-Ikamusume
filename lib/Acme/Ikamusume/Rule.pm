@@ -141,7 +141,7 @@ __END__
 
 =head1 NAME
 
-Acme::Ikamusume::Rules
+Acme::Ikamusume::Rule
 
 =head1 SEE ALSO
 

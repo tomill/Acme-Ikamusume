@@ -12,7 +12,7 @@ DESCRIPTION
     meaning "Squid-Girl", she is a cute Japanese comic/manga character
     (<http://www.ika-musume.com/>).
 
-    Try this module here: <http://ika.koneta.org/>. enjoi!
+    Try this module here: <http://ika.koneta.org/>. enjoy!
 
 METHODS
     Acme::Ikamusume->geso( $text )
