@@ -23,6 +23,8 @@ use constant LAST => undef; # ditto
 use constant CURR => -1;    # for array accessor
 use constant PREV => -2;    # ditto
 
+our @EBI_ACCENT = qw(！！   ！   ♪ ♪   ♪♪);
+
 sub rules {
     
 #     # debug
@@ -130,18 +132,17 @@ sub rules {
         my ($self, $node, $words) = @_;
         if ($node->next->features->{pos} eq '記号' and
             $node->next->features->{category1} =~ /一般|句点/) {
-            return if join('', @$words) =~ /(?:ゲソ|イカ).{0,5}$/;
+            return NEXT if join('', @$words) =~ /(?:ゲソ|イカ).{0,5}$/;
             push @$words, 'でゲソ';
         }
         NEXT;
     },
     
     # EBI: accent
-    'node.readable' => sub {
+    'node' => sub {
         my ($self, $node, $words) = @_;
-        $words->[CURR] =~ s{^(.*エビ|えび|海老)(.*)$}{
-            my @accent = qw(! !! ！！  ！  ♪ ♪ ♪♪);
-            join ("", $1, do { $accent[ int rand scalar @accent ] }, $2);
+        $words->[CURR] =~ s{(エビ|えび|海老)}{
+            $1 . $EBI_ACCENT[ int rand scalar @EBI_ACCENT ];
         }e;
         NEXT;
     },
