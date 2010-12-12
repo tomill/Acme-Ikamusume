@@ -280,6 +280,9 @@ __DATA__
 === IKA: inflection ましょうよ
 --- input:    しましょうよ！
 --- expected: しなイカ！
+=== IKA: inflection ますか
+--- input:    しますか！
+--- expected: しなイカ！
 
 
 === GESO: eos
@@ -312,6 +315,7 @@ __DATA__
 --- reportby: http://twitter.com/Yuichirou/status/13872045712482306
 --- input: 名古屋と言えばエビフリャー
 --- match: 名古屋と言えばエビ.+フリャー
+
 
 === formal MASU to casual 五段
 --- input:    今やります。
