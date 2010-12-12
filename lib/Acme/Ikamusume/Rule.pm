@@ -66,7 +66,7 @@ sub rules {
         }
         NEXT;
     },
-
+    
     # IKA: replace
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
@@ -81,6 +81,36 @@ sub rules {
         NEXT;
     },
     
+    # IKA/GESO: DA + postp
+    'node.readable' => sub {
+        my ($self, $node, $words) = @_;
+        if ($node->prev->surface eq 'だ' and $words->[PREV] eq 'でゲソ' and
+            (
+                $node->features->{pos} =~ /助詞|助動詞/ or
+                $node->features->{category1} eq '接尾'
+            )
+        ) {
+            my $kana = Lingua::JA::Kana::kana2romaji($words->[CURR]);
+            
+            if ($kana =~/^(?:ze|n[aeo]|yo|wa)/) {
+                $words->[CURR] = '';
+                $words->[PREV] = 'じゃなイカ';
+            }
+            if ($kana =~ /^zo/) {
+                $words->[CURR] = '';
+            }
+        }
+        NEXT;
+    },
+    'node.readable' => sub {
+        my ($self, $node, $words) = @_;
+        if ($node->features->{category1} eq '終助詞' and
+            join("", @$words) =~ /(?:でゲソ|じゃなイカ)[よなね]$/) {
+            $words->[CURR] = '';
+        }
+        NEXT;
+    },
+
     # IKA/GESO: postp KA
     'node.readable' => sub {
         my ($self, $node, $words) = @_;

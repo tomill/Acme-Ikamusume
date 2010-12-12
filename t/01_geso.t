@@ -73,21 +73,75 @@ __DATA__
 --- expected: イカ娘じゃなイカ？
 
 
-=== GESO: userdic
+=== IKA/GESO DA = GESO
 --- input:    イカ娘だ
 --- expected: イカ娘でゲソ
-=== GESO: userdic
+=== IKA/GESO DA = GESO
 --- input:    イカ娘だから
 --- expected: イカ娘でゲソから
-=== GESO: userdic
+=== IKA/GESO DA = GESO
 --- input:    イカ娘だが、
 --- expected: イカ娘でゲソが、
-=== IKA: userdic
+=== IKA/GESO DA + ゼ終助詞 = IKA
+--- reported: http://twitter.com/k_e_i_65/status/13634663557898240
+--- input:    イカ娘だぜ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ゼ終助詞 = IKA
+--- input:    イカ娘だぜよ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ゾ終助詞 = GESO
+--- input:    イカ娘だぞ
+--- expected: イカ娘でゲソ
+=== IKA/GESO DA + ゾ終助詞 = GESO
+--- input:    イカ娘だぞ
+--- expected: イカ娘でゲソ
+=== IKA/GESO DA + ゾ終助詞 = GESO
+--- input:    イカ娘だぞい
+--- expected: イカ娘でゲソ
+=== IKA/GESO DA + ゾ終助詞 = GESO
+--- input:    イカ娘だぞよ
+--- expected: イカ娘でゲソ
+=== IKA/GESO DA + ナ終助詞 = IKA
+--- input:    イカ娘だな
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ナ終助詞 = IKA
+--- input:    イカ娘だなあ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ナ終助詞 = IKA
+--- input:    イカ娘だなぁ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ナ終助詞 = IKA
 --- input:    イカ娘だね
 --- expected: イカ娘じゃなイカ
-=== IKA: userdic
+=== IKA/GESO DA + ナ終助詞 = IKA
+--- input:    イカ娘だねえ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ナ終助詞 = IKA
+--- input:    イカ娘だねぇ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ナ終助詞 = IKA
+--- input:    イカ娘だのう
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ヨ終助詞 = IKA
+--- input:    イカ娘だよ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ヨ終助詞 = IKA
+--- input:    イカ娘だよな
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ヨ終助詞 = IKA
 --- input:    イカ娘だよね
 --- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ワ終助詞 = IKA
+--- input:    イカ娘だわ
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ワ終助詞 = IKA
+--- input:    イカ娘だわい
+--- expected: イカ娘じゃなイカ
+=== IKA/GESO DA + ワ終助詞 = IKA
+--- input:    イカ娘だわね
+--- expected: イカ娘じゃなイカ
+
+
 === IKA: userdic (+ IKA replace)
 --- input:    イカ娘だろうか。
 --- expected: イカ娘じゃなイカ。
