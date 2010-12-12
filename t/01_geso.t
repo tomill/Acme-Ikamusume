@@ -39,9 +39,11 @@ __DATA__
 === IKA: replace
 --- input:    西瓜が一つ
 --- expected: すイカが一つ
+--- SKIP
 === IKA: replace
 --- input:    ハイカラな
 --- expected: はイカらな
+--- SKIP
 === IKA: replace
 --- input:    侵略しないか。
 --- expected: 侵略しなイカ。
@@ -173,6 +175,7 @@ __DATA__
 === IKA/GESO: postp KA 動詞+
 --- input:    走るか？
 --- expected: 走るかでゲソ？
+--- SKIP
 === IKA/GESO: postp KA 動詞+
 --- input:    走るか？
 --- expected: 走らなイカ？
@@ -285,21 +288,68 @@ __DATA__
 --- expected: しなイカ！
 
 
-=== GESO: eos
+=== GESO: eos EOS
+--- input:    わかった
+--- expected: わかったでゲソ
+=== GESO: eos + 記号（一般）
+--- input:    なんと？　ああ　びっくり！
+--- expected: なんとでゲソ？　ああでゲソ　びっくりでゲソ！
+=== GESO: eos + 記号（句点）
 --- input:    わかった。
 --- expected: わかったでゲソ。
-=== GESO: eos
---- input:    わかったでゲソ。
---- expected: わかったでゲソ。
-=== GESO: eos
---- input:    いいじゃなイカ。
---- expected: いいじゃなイカ。
-=== GESO: eos
+=== GESO: eos + 記号（括弧閉）
+--- input:    （ふむふむ）
+--- expected: （ふむふむでゲソ）
+=== GESO: eos + 記号 no-op
 --- input:    今日は、いい天気。
 --- expected: 今日は、いい天気でゲソ。
-=== GESO: eos
---- input:    なんと？　あああ　びっくり！
---- expected: なんとでゲソ？　あああ　びっくりでゲソ！
+
+=== GESO: eos GESO/IKA no-op
+--- input:    わかったでゲソ。
+--- expected: わかったでゲソ。
+=== GESO: eos GESO+IKA no-op
+--- input:    いいじゃなイカ。
+--- expected: いいじゃなイカ。
+
+=== GESO: eos is その他 no-op
+--- input:    かんたァ
+--- expected: かんたァ
+=== GESO: eos is フィラー
+--- input:    えーっと
+--- expected: えーっとでゲソ
+=== GESO: eos is 感動詞
+--- input:    へぇ
+--- expected: へぇでゲソ
+=== GESO: eos is 形容詞
+--- input:    おかしい
+--- expected: おかしいでゲソ
+=== GESO: eos is 助詞 no-op
+--- input:    人類へ
+--- expected: 人類へ
+=== GESO: eos is 助動詞
+--- input:    そうすべし
+--- expected: そうすべしでゲソ
+=== GESO: eos is 接続詞 no-op
+--- input:    すると
+--- expected: すると
+=== GESO: eos is 接続詞 で no-op
+--- input:    で
+--- expected: で
+=== GESO: eos is 接頭詞 no-op
+--- input:    全。
+--- expected: 全。
+=== GESO: eos is 動詞
+--- input:    泳ぐ
+--- expected: 泳ぐでゲソ
+=== GESO: eos is 副詞
+--- input:    ひょっこり
+--- expected: ひょっこりでゲソ
+=== GESO: eos is 名詞
+--- input:    海
+--- expected: 海でゲソ
+=== GESO: eos is 連体詞 no-op
+--- input:    恐るべき、
+--- expected: 恐るべき、
 
 
 === EBI: accent

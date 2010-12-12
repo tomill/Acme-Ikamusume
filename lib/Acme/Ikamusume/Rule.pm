@@ -86,7 +86,8 @@ sub rules {
     # IKA/GESO: DA + postp
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
-        if ($node->prev->surface eq 'だ' and $words->[PREV] eq 'でゲソ' and
+        if ($node->prev->surface eq 'だ' and
+            $words->[PREV] eq 'でゲソ' and
             (
                 $node->features->{pos} =~ /助詞|助動詞/ or
                 $node->features->{category1} eq '接尾'
@@ -130,10 +131,15 @@ sub rules {
     # GESO: eos
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
-        if ($node->next->features->{pos} eq '記号' and
-            $node->next->features->{category1} =~ /一般|句点/) {
-            return NEXT if join('', @$words) =~ /(?:ゲソ|イカ).{0,5}$/;
-            push @$words, 'でゲソ';
+        if ($node->next->stat == 3 or # MECAB_EOS_NODE
+            (
+                $node->next->features->{pos} eq '記号' and
+                $node->next->features->{category1} =~ /一般|句点|括弧閉/
+            )
+        ) {
+            return NEXT if $node->features->{pos} =~ /^(?:その他|記号|助詞|接頭詞|接続詞|連体詞)/;
+            return NEXT if join('', @$words) =~ /(?:ゲソ|イカ)$/;
+            $words->[CURR] .= 'でゲソ';
         }
         NEXT;
     },
