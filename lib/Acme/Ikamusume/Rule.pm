@@ -84,6 +84,8 @@ sub rules {
     # IKA: replace
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
+        return NEXT if $words->[CURR] =~ /イカ/;
+        
         my $curr = katakana2hiragana($node->features->{yomi});
         my $next = katakana2hiragana($node->next->features->{yomi} || "");
         my $prev = katakana2hiragana($node->prev->features->{yomi} || "");

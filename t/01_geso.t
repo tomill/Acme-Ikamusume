@@ -37,13 +37,14 @@ __DATA__
 --- input:    海からの使者、イカ娘でゲソ
 --- expected: 海からの使者、イカ娘でゲソ
 === IKA: replace
---- input:    西瓜が一つ
---- expected: すイカが一つ
---- SKIP
+--- input:    西瓜でゲソ
+--- expected: すイカでゲソ
 === IKA: replace
---- input:    ハイカラな
---- expected: はイカらな
---- SKIP
+--- input:    いかんでゲソ
+--- expected: イカんでゲソ
+=== IKA: replace
+--- input:    ハイカラでゲソ
+--- expected: ハイカラでゲソ
 === IKA: replace
 --- input:    侵略しないか。
 --- expected: 侵略しなイカ。
