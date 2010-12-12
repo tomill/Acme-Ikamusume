@@ -48,10 +48,22 @@ sub rules {
     'node.has_extra' => sub {
         my ($self, $node, $words) = @_;
         if (($node->features->{extra}[1] || "") eq 'inflection') {
-            if ($node->prev->features->{inflect} =~ /五段/) {
-                $words->[PREV] = _inflect_5step($words->[PREV], 'i' => 'a');
+            if ($node->prev->features->{pos} eq '名詞') {
+                $words->[CURR] = 'じゃなイカ';
+            }
+            elsif ($node->prev->features->{pos} eq '副詞') {
+                $words->[CURR] = 'でゲソか';
+            }
+            elsif ($node->prev->features->{pos} eq '助動詞' and
+                   $node->prev->surface eq 'です') {
+                $words->[PREV] = 'じゃなイ';
+                $words->[CURR] = 'カ';
+            }
+            elsif ($node->prev->features->{inflect} =~ /五段/) {
+                $words->[PREV] = _inflect_5step($words->[PREV], '.' => 'a');
                 $words->[CURR] = 'なイカ';
-            } elsif ($node->prev->features->{inflect} =~ /一段|カ変|サ変/) {
+            }
+            elsif ($node->prev->features->{inflect} =~ /一段|カ変|サ変/) {
                 $words->[CURR] = 'なイカ';
             }
         }
@@ -110,20 +122,6 @@ sub rules {
         if ($node->features->{category1} eq '終助詞' and
             join("", @$words) =~ /(?:でゲソ|じゃなイカ)[よなね]$/) {
             $words->[CURR] = '';
-        }
-        NEXT;
-    },
-
-    # IKA/GESO: postp KA
-    'node.readable' => sub {
-        my ($self, $node, $words) = @_;
-        if ($words->[CURR] eq 'か' and $node->features->{category1} =~ /終助詞/) {
-            if ($node->prev->features->{pos} eq '名詞') {
-                $words->[CURR] = 'じゃなイカ';
-            }
-            if ($node->prev->features->{pos} eq '副詞') {
-                $words->[CURR] = 'でゲソか';
-            }
         }
         NEXT;
     },

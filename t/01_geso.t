@@ -166,20 +166,15 @@ __DATA__
 --- expected: そうじゃなイカと。
 
 
-=== IKA/GESO: postp KA 名詞+
+=== IKA/GESO: inflection 名詞+
 --- input:    お店か
 --- expected: お店じゃなイカ
-=== IKA/GESO: postp KA 副詞+
+=== IKA/GESO: inflection 副詞+
 --- input:    まだか
 --- expected: まだでゲソか
-=== IKA/GESO: postp KA 動詞+
---- input:    走るか？
---- expected: 走るかでゲソ？
---- SKIP
-=== IKA/GESO: postp KA 動詞+
+=== IKA/GESO: inflection 動詞+
 --- input:    走るか？
 --- expected: 走らなイカ？
---- SKIP
 
 
 === IKA: inflection 五段
