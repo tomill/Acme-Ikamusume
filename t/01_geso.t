@@ -407,3 +407,9 @@ __DATA__
 === userdic: お主
 --- input:    きみは
 --- expected: お主は
+
+=== GESO: interjection
+--- input:    あはははは
+--- expected: ゲソソソ
+--- SKIP
+
