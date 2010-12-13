@@ -359,6 +359,11 @@ __DATA__
 --- expected: 恐るべき、
 
 
+=== HTML tweak
+--- input: <p>君に届け</p>
+--- expected: <p>お主に届けでゲソ</p>
+
+
 === EBI: accent
 --- input: 海老蔵が入院した
 --- match: 海老.+蔵が入院した
