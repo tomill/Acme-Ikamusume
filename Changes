@@ -1,5 +1,11 @@
 Revision history for Perl extension Acme::Ikamusume
 
+0.04  Mon Dec 13 09:22:06 JST 2010
+        - more GESO
+        - more IKA (postp KA)
+        - fix DA + postp
+        - fix EBI accent rule on unknown word
+
 0.03  Sat Dec 11 23:25:15 JST 2010
         - add ONUSHI to userdic
         - typo fix
