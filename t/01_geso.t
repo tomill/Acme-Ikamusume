@@ -54,6 +54,17 @@ __DATA__
 === IKA: replace
 --- input:    侵略しないかと
 --- expected: 侵略しなイカと
+=== IKA: replace
+--- input:    徘徊完了
+--- expected: はイカイカんりょうでゲソ
+
+
+=== GESO: replace
+--- input:    そうでげそ
+--- expected: そうでゲソ
+=== GESO: replace
+--- input:    凧揚げ僧侶
+--- expected: 凧あゲソうりょでゲソ
 
 
 === GESO: userdic
