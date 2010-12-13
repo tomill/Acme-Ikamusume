@@ -391,6 +391,23 @@ __DATA__
 --- expected: するでゲソ。
 
 
+=== no honorific
+--- input:    栄子ちゃんです
+--- expected: 栄子でゲソ
+=== no honorific
+--- input:    たけるくんです
+--- expected: たけるでゲソ
+=== no honorific
+--- input:    千鶴さんです
+--- expected: 千鶴でゲソ
+=== no honorific / unknown
+--- input:    Cindyさんです
+--- expected: Cindyでゲソ
+=== no honorific / myself
+--- input:    イカ娘様と呼びませんか
+--- expected: イカ娘様と呼ばなイカ
+
+
 === userdic: お主
 --- input:    あなたは
 --- expected: お主は

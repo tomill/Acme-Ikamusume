@@ -81,6 +81,16 @@ sub rules {
         NEXT;
     },
     
+    # no honorific
+    'node.readable' => sub {
+        my ($self, $node, $words) = @_;
+        if ($node->feature =~ /^名詞,接尾,人名,/ and
+            $words->[PREV] ne 'イカ娘') {
+            $words->[CURR] = '';
+        }
+        NEXT;
+    },
+    
     # IKA/GESO: replace
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
