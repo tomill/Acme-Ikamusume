@@ -8,7 +8,7 @@ use base 'Text::MeCab';
 my $encoding = Encode::find_encoding( Text::MeCab::ENCODING );
 
 sub parse {
-    shift->SUPER::parse($encoding->encode(@_) || "");
+    shift->SUPER::parse($encoding->encode(@_));
 }
 
 package Text::MeCab::Node;
@@ -19,7 +19,8 @@ package Text::MeCab::Node;
     for my $method (qw( surface feature )) {
         my $original = \&$method;
         *{$method} = sub {
-            $encoding->decode($original->(@_) || "");
+            my $val = $original->(@_);
+            defined $val ? $encoding->decode($val) : "";
         };
     }
 }

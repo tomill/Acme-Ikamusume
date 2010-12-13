@@ -4,8 +4,8 @@ NAME
 SYNOPSIS
       use Acme::Ikamusume;
       use utf8;
-      Acme::Ikamusume->geso('イカ娘です。perlで侵略しませんか？');
-      # => イカ娘でゲソ。perlで侵略しなイカ？
+      Acme::Ikamusume->geso('イカ娘です。あなたもperlで侵略しませんか？');
+      # => イカ娘でゲソ。お主もperlで侵略しなイカ？
 
 DESCRIPTION
     Acme::Ikamusume module converts text to Ikamusume like talk. Ikamusume,

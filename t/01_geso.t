@@ -15,7 +15,7 @@ run {
     my $block = shift;
     
     my $output = Acme::Ikamusume->geso($block->input);
-    my $title = $block->name ."\n       input:  ". $block->input;
+    my $title = $block->name ." input: ". $block->input;
     
     if ($block->match) {
         like($output, $block->match, $title);
@@ -26,8 +26,8 @@ run {
 
 __DATA__
 === SYNOPSIS
---- input:    イカ娘です。perlで侵略しませんか？
---- expected: イカ娘でゲソ。perlで侵略しなイカ？
+--- input:    イカ娘です。あなたもperlで侵略しませんか？
+--- expected: イカ娘でゲソ。お主もperlで侵略しなイカ？
 
 
 === IKA: replace

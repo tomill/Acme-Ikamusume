@@ -18,9 +18,9 @@ sub new {
 
 sub geso {
     my ($self, $input) = @_;
-    return "" unless $input;
+    return "" unless defined $input;
     $self = $self->new unless ref $self;
-
+    
     my $parser = Acme::Ikamusume::MAParser->new({
         userdic => File::ShareDir::dist_file('Acme-Ikamusume', 'ika.dic'),
     });
@@ -39,7 +39,8 @@ sub geso {
             $node = $node->next
         ) {
             next if $node->stat =~ /[23]/; # skip MECAB_(BOS|EOS)_NODE
-            push @words, $node->surface || "";
+            push @words, $node->surface;
+            
             $self->call_trigger('node' => ($node, \@words));
             $self->call_trigger('node.has_extra' => ($node, \@words)) if $node->features->{extra};
             $self->call_trigger('node.readable'  => ($node, \@words)) if $node->features->{yomi};
@@ -64,8 +65,8 @@ Acme::Ikamusume - The invader comes from the bottom of the sea!
 
   use Acme::Ikamusume;
   use utf8;
-  Acme::Ikamusume->geso('イカ娘です。perlで侵略しませんか？');
-  # => イカ娘でゲソ。perlで侵略しなイカ？
+  Acme::Ikamusume->geso('イカ娘です。あなたもperlで侵略しませんか？');
+  # => イカ娘でゲソ。お主もperlで侵略しなイカ？
 
 =head1 DESCRIPTION
 
