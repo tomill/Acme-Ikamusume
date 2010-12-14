@@ -154,7 +154,7 @@ sub rules {
         if ($node->next->stat == 3 or # MECAB_EOS_NODE
             (
                 $node->next->features->{pos} eq '記号' and
-                $node->next->features->{category1} =~ /一般|句点|括弧閉/
+                $node->next->features->{category1} =~ /句点|括弧閉|GESO可/
             )
         ) {
             if ($node->features->{pos} =~ /^(?:その他|記号|助詞|接頭詞|接続詞|連体詞)/) {

@@ -304,15 +304,26 @@ __DATA__
 === GESO: eos EOS
 --- input:    わかった
 --- expected: わかったでゲソ
-=== GESO: eos + 記号（一般）
---- input:    なんと？　ああ　びっくり！
---- expected: なんとでゲソ？　ああでゲソ　びっくりでゲソ！
+
 === GESO: eos + 記号（句点）
 --- input:    わかった。
 --- expected: わかったでゲソ。
 === GESO: eos + 記号（括弧閉）
 --- input:    （ふむふむ）
 --- expected: （ふむふむでゲソ）
+=== GESO: eos + 記号（一般GESO可）
+--- input:    なんと？　ああ　びっくり！
+--- expected: なんとでゲソ？　ああでゲソ　びっくりでゲソ！
+=== GESO: eos + 記号（一般GESO可）
+--- input:    ふむふむ…ふむふむ‥ふむふむ～
+--- expected: ふむふむでゲソ…ふむふむでゲソ‥ふむふむでゲソ～
+=== GESO: eos + 記号（一般GESO可）
+--- input:    キャー☆　キャー★
+--- expected: キャーでゲソ☆　キャーでゲソ★
+=== GESO: eos + 記号 その他 no-op
+--- input:    シンディー・ハリス※クラーク→マーティン＆
+--- expected: シンディー・ハリス※クラーク→マーティン＆
+
 === GESO: eos + 記号 no-op
 --- input:    今日は、いい天気。
 --- expected: 今日は、いい天気でゲソ。
