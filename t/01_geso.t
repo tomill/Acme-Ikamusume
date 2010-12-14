@@ -336,6 +336,9 @@ __DATA__
 === GESO: eos is 助動詞
 --- input:    そうすべし
 --- expected: そうすべしでゲソ
+=== GESO: eos is GESO/IKA + 助動詞
+--- input:    ゲソね
+--- expected: ゲソね
 === GESO: eos is 接続詞 no-op
 --- input:    すると
 --- expected: すると
@@ -399,6 +402,17 @@ __DATA__
 === formal to casual userdic
 --- input:    そうでした。
 --- expected: そうだったでゲソ。
+
+
+=== IKA: IKAN
+--- input:    いけないでしょ
+--- expected: イカんでしょ
+=== IKA: IKAN
+--- input:    それはいけないですね
+--- expected: それはイカんじゃなイカ
+=== IKA: IKAN
+--- input:    それはいけませんね
+--- expected: それはイカんね
 
 
 === rephrase simply

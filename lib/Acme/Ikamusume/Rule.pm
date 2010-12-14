@@ -154,8 +154,17 @@ sub rules {
                 $node->next->features->{category1} =~ /一般|句点|括弧閉/
             )
         ) {
-            return NEXT if $node->features->{pos} =~ /^(?:その他|記号|助詞|接頭詞|接続詞|連体詞)/;
-            return NEXT if join('', @$words) =~ /(?:ゲソ|イカ)$/;
+            if ($node->features->{pos} =~ /^(?:その他|記号|助詞|接頭詞|接続詞|連体詞)/) {
+                return NEXT;
+            }
+            if ($node->features->{pos} =~ /^(?:助動詞)/ and
+                $words->[PREV] =~ /(?:ゲソ|イカ)/) {
+                return NEXT;
+            }
+            if (join('', @$words) =~ /(?:ゲソ|イカ)$/) {
+                return NEXT;
+            }
+            
             $words->[CURR] .= 'でゲソ';
         }
         NEXT;
