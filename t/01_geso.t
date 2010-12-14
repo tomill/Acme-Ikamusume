@@ -360,7 +360,7 @@ __DATA__
 
 
 === HTML tweak
---- input: <p>君に届け</p>
+--- input:    <p>君に届け</p>
 --- expected: <p>お主に届けでゲソ</p>
 
 
@@ -394,6 +394,16 @@ __DATA__
 === formal MASU to casual サ変
 --- input:    します。
 --- expected: するでゲソ。
+
+
+=== formal to casual userdic
+--- input:    そうでした。
+--- expected: そうだったでゲソ。
+
+
+=== rephrase simply
+--- input:    それはありません。
+--- expected: それはないでゲソ。
 
 
 === no honorific

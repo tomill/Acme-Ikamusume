@@ -30,7 +30,6 @@ sub rules {
 #     # debug
 #     'node' => sub {
 #         my ($self, $node, $words) = @_;
-#         return NEXT unless $ENV{DEBUG};
 #         use YAML;
 #         warn Dump [ $node->surface, $node->features ];
 #     },
