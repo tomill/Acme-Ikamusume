@@ -57,6 +57,12 @@ __DATA__
 === IKA: replace
 --- input:    徘徊完了
 --- expected: はイカイカんりょうでゲソ
+=== IKA: replace
+--- input:    いい感じ無敵にススメ
+--- expected: イーカんじ無敵にススメ
+=== IKA: replace
+--- input:    いー感じ無敵にススメ
+--- expected: イーカんじ無敵にススメ
 
 
 === GESO: replace

@@ -105,6 +105,9 @@ sub rules {
         $words->[CURR] = $curr if $curr =~ s/いか/イカ/g;
         $words->[CURR] = $curr if $curr =~ s/げそ/ゲソ/g;
         
+        $words->[CURR] = $curr if $curr =~ s/い[いー]$/イー/ && $next =~ /^か/;
+        $words->[CURR] = $curr if $prev =~ /い[いー]$/ && $curr =~ s/^か/カ/;
+        
         $words->[CURR] = $curr if $curr =~ s/い$/イ/ && $next =~ /^か/;
         $words->[CURR] = $curr if $prev =~ /い$/ && $curr =~ s/^か/カ/;
         
