@@ -1,5 +1,10 @@
 Revision history for Perl extension Acme::Ikamusume
 
+        - understands meaning of the symbols
+        - add long IKA pattern
+        - add IKAN pattern
+        - add few words into userdic
+
 0.05  Tue Dec 14 03:44:57 JST 2010
         - 0 but ture bugfix
         - add no honorific rule

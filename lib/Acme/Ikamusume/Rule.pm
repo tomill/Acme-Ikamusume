@@ -93,15 +93,17 @@ sub rules {
     # IKA/GESO: replace
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
+        $words->[CURR] =~ s/い[いー]か/イーカ/g;
         $words->[CURR] =~ s/いか/イカ/g;
         $words->[CURR] =~ s/げそ/ゲソ/g;
         
-        return NEXT if $words->[CURR] =~ /イカ|ゲソ/;
+        return NEXT if $words->[CURR] =~ /イー?カ|ゲソ/;
         
         my $curr = katakana2hiragana($node->features->{yomi});
         my $next = katakana2hiragana($node->next->features->{yomi} || "");
         my $prev = katakana2hiragana($node->prev->features->{yomi} || "");
-        
+       
+        $words->[CURR] = $curr if $curr =~ s/い[いー]か/イーカ/g;
         $words->[CURR] = $curr if $curr =~ s/いか/イカ/g;
         $words->[CURR] = $curr if $curr =~ s/げそ/ゲソ/g;
         
