@@ -70,14 +70,22 @@ sub rules {
     # formal MASU to casual
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
-        if ($words->[CURR] eq 'ます' and $node->features->{pos} eq '助動詞' and
-            $node->prev->features->{pos} eq '動詞') {
+        unless ($node->features->{original} eq 'ます' and
+                $node->features->{pos} eq '助動詞' and
+                $node->prev->features->{pos} eq '動詞') {
+            return NEXT;
+        }
+        if ($node->features->{inflect_type} eq '基本形') { # ます
             $words->[PREV] = $node->prev->features->{original};
             $words->[CURR] = '';
 
             if ($node->next->features->{pos} =~ /^助詞/) {
                 $words->[CURR] .= 'でゲソ';
             }
+        }
+        if ($node->features->{inflect_type} eq '連用形' and # ます
+            $node->features->{category3} !~ /五段/) { # 五段 => { -i/っ/ん/い }
+            $words->[CURR] = '';
         }
         NEXT;
     },
@@ -203,7 +211,7 @@ sub rules {
         }
         
         if ($node->features->{pos} eq '動詞' and
-            $node->features->{inflect_type} eq '基本形' and
+            $node->features->{inflect_type} =~ '基本形' and
             $node->next->features->{pos} =~ /^助詞/) {
             $words->[CURR] .= 'でゲソ';
         }

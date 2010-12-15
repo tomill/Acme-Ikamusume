@@ -424,36 +424,57 @@ __DATA__
 --- match: 名古屋と言えばエビ.+フリャー
 
 
-=== formal MASU to casual 五段
+=== formal MASU 基本形 to casual 五段
 --- input:    今やります。
 --- expected: 今やるでゲソ。
-=== formal MASU to casual 五段 + 助詞 / GESO pos
+=== formal MASU 基本形 to casual 五段 + 助詞 / GESO eos
 --- input:    言いますか。
 --- expected: 言うでゲソか。
-=== formal MASU to casual 上一段
+=== formal MASU 基本形 to casual 上一段
 --- input:    います。
 --- expected: いるでゲソ。
-=== formal MASU to casual 上一段 + 助詞 / GESO pos
+=== formal MASU 基本形 to casual 上一段 + 助詞 / GESO eos
 --- input:    いますか。
 --- expected: いるでゲソか。
-=== formal MASU to casual 下一段
+=== formal MASU 基本形 to casual 下一段
 --- input:    見えます。
 --- expected: 見えるでゲソ。
-=== formal MASU to casual 下一段 + 助詞 / GESO pos
+=== formal MASU 基本形 to casual 下一段 + 助詞 / GESO eos
 --- input:    見えますか。
 --- expected: 見えるでゲソか。
-=== formal MASU to casual カ変
+=== formal MASU 基本形 to casual カ変
 --- input:    来ます。
 --- expected: 来るでゲソ。
-=== formal MASU to casual カ変 + 助詞 / GESO pos
+=== formal MASU 基本形 to casual カ変 + 助詞 / GESO eos
 --- input:    来ますか。
 --- expected: 来るでゲソか。
-=== formal MASU to casual サ変
+=== formal MASU 基本形 to casual サ変
 --- input:    します。
 --- expected: するでゲソ。
-=== formal MASU to casual サ変 + 助詞 / GESO pos
+=== formal MASU 基本形 to casual サ変 + 助詞 / GESO eos
 --- input:    しますか。
 --- expected: するでゲソか。
+
+=== formal MASU 連用形 to casual 五段
+--- input:    書きました。
+--- expected: 書いたでゲソ。
+--- SKIP
+=== formal MASU 連用形 to casual 五段
+--- input:    やりました。
+--- expected: やったでゲソ。
+--- SKIP
+=== formal MASU 連用形 to casual 下一
+--- input:    受けました。
+--- expected: 受けたでゲソ。
+=== formal MASU 連用形 to casual 上一
+--- input:    起きました。
+--- expected: 起きたでゲソ。
+=== formal MASU 連用形 to casual カ変
+--- input:    来ました。
+--- expected: 来たでゲソ。
+=== formal MASU 連用形 to casual サ変
+--- input:    しました。
+--- expected: したでゲソ。
 
 
 === formal to casual userdic
