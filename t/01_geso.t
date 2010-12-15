@@ -66,6 +66,20 @@ __DATA__
 === IKA: replace
 --- input:    言い方
 --- expected: イーカたでゲソ
+=== IKA: replace
+--- input:    いいか
+--- expected: いイカ
+
+
+=== IKA: IIKA
+--- input:    いいか？
+--- expected: いイカ？
+=== IKA: IIKA
+--- input:    いいですか？
+--- expected: いイカ？
+=== IKA: IIKA
+--- input:    いいでしょうか？
+--- expected: いイカ？
 
 
 === GESO: replace
@@ -82,9 +96,6 @@ __DATA__
 === GESO: userdic
 --- input:    イカ娘ですから、
 --- expected: イカ娘でゲソから、
-=== IKA: userdic
---- input:    イカ娘ですか？
---- expected: イカ娘じゃなイカ？
 === IKA: userdic
 --- input:    イカ娘ですね。
 --- expected: イカ娘じゃなイカ。
@@ -199,6 +210,9 @@ __DATA__
 === IKA/GESO: inflection 動詞（その他）+
 --- input:    走りませんか？
 --- expected: 走らなイカ？
+=== IKA/GESO: inflection です +
+--- input:    イカ娘ですか？
+--- expected: イカ娘じゃなイカ？
 
 
 === IKA: inflection 五段

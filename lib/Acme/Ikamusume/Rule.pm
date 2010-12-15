@@ -54,7 +54,8 @@ sub rules {
                 $words->[CURR] = 'でゲソか';
             }
             elsif ($node->prev->features->{pos} eq '助動詞' and
-                   $node->prev->surface eq 'です') {
+                   $node->prev->surface eq 'です' and
+                   $words->[PREV - 1] !~ /^[いイ]{2}$/) {
                 $words->[PREV] = 'じゃなイ';
                 $words->[CURR] = 'カ';
             }
@@ -101,7 +102,7 @@ sub rules {
     # IKA/GESO: replace
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
-        $words->[CURR] =~ s/い[いー]か/イーカ/g;
+        $words->[CURR] =~ s/い[いー]か(.)/イーカ$1/g;
         $words->[CURR] =~ s/いか/イカ/g;
         $words->[CURR] =~ s/げそ/ゲソ/g;
         
@@ -111,17 +112,18 @@ sub rules {
         my $next = katakana2hiragana($node->next->features->{yomi} || "");
         my $prev = katakana2hiragana($node->prev->features->{yomi} || "");
        
-        $words->[CURR] = $curr if $curr =~ s/い[いー]か/イーカ/g;
+        $words->[CURR] = $curr if $curr =~ s/い[いー]か(.)/イーカ$1/g;
         $words->[CURR] = $curr if $curr =~ s/いか/イカ/g;
         $words->[CURR] = $curr if $curr =~ s/げそ/ゲソ/g;
         
-        $words->[CURR] = $curr if $curr =~ s/い[いー]$/イー/ && $next =~ /^か/;
-        $words->[CURR] = $curr if $prev =~ /い[いー]$/ && $curr =~ s/^か/カ/;
+        $words->[CURR] = $curr if $next =~ /^か./ && $curr =~ s/い[いー]$/イー/;
+        $words->[CURR] = $curr if $prev =~ /い[いー]$/ && $curr =~ s/^か(.)/カ$1/;
         
-        $words->[CURR] = $curr if $curr =~ s/い$/イ/ && $next =~ /^か/;
-        $words->[CURR] = $curr if $prev =~ /い$/ && $curr =~ s/^か/カ/;
-        
-        $words->[CURR] = $curr if $curr =~ s/げ$/ゲ/ && $next =~ /^そ/;
+        $words->[CURR] = $curr if join('', @$words[0 .. @$words - 2]) =~ /[いイ]$/
+                                    && $curr =~ s/^か/カ/;
+        $words->[CURR] = $curr if $next =~ /^か/ && $curr =~ s/い$/イ/;
+
+        $words->[CURR] = $curr if $next =~ /^そ/ && $curr =~ s/げ$/ゲ/;
         $words->[CURR] = $curr if $prev =~ /げ$/ && $curr =~ s/^そ/ソ/;
         
         NEXT;
@@ -157,6 +159,25 @@ sub rules {
         }
         NEXT;
     },
+    
+    # IKA: IIKA
+    'node.readable' => sub {
+        my ($self, $node, $words) = @_;
+        if (not $words->[PREV] or $words->[PREV] !~ /^(?:[いイ]{2})$/) {
+            return NEXT;
+        }
+        if ($node->surface =~ /^(?:です|でしょう)$/ and
+            $node->next->surface =~ /^か/) {
+            $words->[PREV] = 'いイ';
+            $words->[CURR] = '';
+        }
+        if ($node->surface eq 'でしょうか') {
+            $words->[PREV] = 'いイ';
+            $words->[CURR] = 'カ';
+        }
+        NEXT;
+    },
+    
     
     # GESO: eos
     'node.readable' => sub {
@@ -198,7 +219,7 @@ sub rules {
         }e;
         NEXT;
     },
-
+    
 }
 
 sub _inflect_5step {
