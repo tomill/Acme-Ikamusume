@@ -58,7 +58,11 @@ sub rules {
                 $words->[PREV] = 'じゃなイ';
                 $words->[CURR] = 'カ';
             }
-            elsif ($node->prev->features->{inflect} =~ /五段/) {
+            
+            if ($words->[PREV] =~ /(?:イー?カ|ゲソ)$/) {
+                return NEXT;
+            }
+            if ($node->prev->features->{inflect} =~ /五段/) {
                 $words->[PREV] = _inflect_5step($words->[PREV], '.' => 'a');
                 $words->[CURR] = 'なイカ';
             }
@@ -76,6 +80,10 @@ sub rules {
             $node->prev->features->{pos} eq '動詞') {
             $words->[PREV] = $node->prev->features->{original};
             $words->[CURR] = '';
+
+            if ($node->next->features->{pos} =~ /^助詞/) {
+                $words->[CURR] .= 'でゲソ';
+            }
         }
         NEXT;
     },
@@ -162,16 +170,23 @@ sub rules {
             if ($node->features->{pos} =~ /^(?:その他|記号|助詞|接頭詞|接続詞|連体詞)/) {
                 return NEXT;
             }
-            if ($node->features->{pos} =~ /^(?:助動詞)/ and
-                $words->[PREV] =~ /(?:ゲソ|イカ)/) {
+            if ($node->features->{pos} =~ /^助動詞/ and
+                $words->[PREV] =~ /(?:ゲソ|イー?カ)/) {
                 return NEXT;
             }
-            if (join('', @$words) =~ /(?:ゲソ|イカ)$/) {
+            if (join('', @$words) =~ /(?:ゲソ|イー?カ)$/) {
                 return NEXT;
             }
             
             $words->[CURR] .= 'でゲソ';
         }
+        
+        if ($node->features->{pos} eq '動詞' and
+            $node->features->{inflect_type} eq '基本形' and
+            $node->next->features->{pos} =~ /^助詞/) {
+            $words->[CURR] .= 'でゲソ';
+        }
+
         NEXT;
     },
     

@@ -178,7 +178,7 @@ __DATA__
 --- expected: イカ娘でゲソが、
 === GESO: userdic
 --- input:    イカ娘で、あるが、
---- expected: イカ娘で、あるが、
+--- expected: イカ娘で、あるでゲソが、
 === IKA: userdic
 --- input:    そうかな。
 --- expected: そうじゃなイカ。
@@ -193,8 +193,11 @@ __DATA__
 === IKA/GESO: inflection 副詞+
 --- input:    まだか
 --- expected: まだでゲソか
-=== IKA/GESO: inflection 動詞+
+=== IKA/GESO: inflection 動詞（基本形）+
 --- input:    走るか？
+--- expected: 走るでゲソか？
+=== IKA/GESO: inflection 動詞（その他）+
+--- input:    走りませんか？
 --- expected: 走らなイカ？
 
 
@@ -299,9 +302,6 @@ __DATA__
 === IKA: inflection ましょうよ
 --- input:    しましょうよ！
 --- expected: しなイカ！
-=== IKA: inflection ますか
---- input:    しますか！
---- expected: しなイカ！
 
 
 === GESO: eos EOS
@@ -405,18 +405,33 @@ __DATA__
 === formal MASU to casual 五段
 --- input:    今やります。
 --- expected: 今やるでゲソ。
+=== formal MASU to casual 五段 + 助詞 / GESO pos
+--- input:    言いますか。
+--- expected: 言うでゲソか。
 === formal MASU to casual 上一段
 --- input:    います。
 --- expected: いるでゲソ。
+=== formal MASU to casual 上一段 + 助詞 / GESO pos
+--- input:    いますか。
+--- expected: いるでゲソか。
 === formal MASU to casual 下一段
 --- input:    見えます。
 --- expected: 見えるでゲソ。
+=== formal MASU to casual 下一段 + 助詞 / GESO pos
+--- input:    見えますか。
+--- expected: 見えるでゲソか。
 === formal MASU to casual カ変
 --- input:    来ます。
 --- expected: 来るでゲソ。
+=== formal MASU to casual カ変 + 助詞 / GESO pos
+--- input:    来ますか。
+--- expected: 来るでゲソか。
 === formal MASU to casual サ変
 --- input:    します。
 --- expected: するでゲソ。
+=== formal MASU to casual サ変 + 助詞 / GESO pos
+--- input:    しますか。
+--- expected: するでゲソか。
 
 
 === formal to casual userdic
