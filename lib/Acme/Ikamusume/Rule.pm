@@ -23,7 +23,7 @@ use constant LAST => undef; # ditto
 use constant CURR => -1;    # for array accessor
 use constant PREV => -2;    # ditto
 
-our @EBI_ACCENT = qw(！！   ！   ♪ ♪   ♪♪);
+our @EBI_ACCENT = qw(！ ♪ ♪ ♫ ♬ ♡);
 
 sub rules {
     
