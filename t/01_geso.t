@@ -396,6 +396,14 @@ __DATA__
 --- expected: 恐るべき、
 
 
+=== IKA: eos NAI
+--- input:    そうじゃない
+--- expected: そうじゃなイカ
+=== IKA: eos NAI
+--- input:    いいんじゃない？
+--- expected: いいんじゃなイカ？
+
+
 === HTML tweak
 --- input:    <p>君に届け</p>
 --- expected: <p>お主に届けでゲソ</p>

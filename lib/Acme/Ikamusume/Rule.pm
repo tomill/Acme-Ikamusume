@@ -27,13 +27,6 @@ our @EBI_ACCENT = qw(！ ♪ ♪ ♫ ♬ ♡);
 
 sub rules {
     
-#     # debug
-#     'node' => sub {
-#         my ($self, $node, $words) = @_;
-#         use YAML;
-#         warn Dump [ $node->surface, $node->features ];
-#     },
-    
     # use userdic extra field
     'node.has_extra' => sub {
         my ($self, $node, $words) = @_;
@@ -178,8 +171,7 @@ sub rules {
         NEXT;
     },
     
-    
-    # GESO: eos
+    # GESO/IKA: eos
     'node.readable' => sub {
         my ($self, $node, $words) = @_;
         if ($node->next->stat == 3 or # MECAB_EOS_NODE
@@ -191,6 +183,14 @@ sub rules {
             if ($node->features->{pos} =~ /^(?:その他|記号|助詞|接頭詞|接続詞|連体詞)/) {
                 return NEXT;
             }
+            
+            if ($node->features->{pos} eq '助動詞' and
+                $words->[PREV] eq 'じゃ' and
+                $node->surface eq 'ない') {
+                $words->[CURR] = 'なイカ';
+                return NEXT;
+            }
+            
             if ($node->features->{pos} =~ /^助動詞/ and
                 $words->[PREV] =~ /(?:ゲソ|イー?カ)/) {
                 return NEXT;
