@@ -1,9 +1,13 @@
 Revision history for Perl extension Acme::Ikamusume
 
+0.06  Mon Dec 20 15:08:03 JST 2010
+        - change verb(original form) + postp = GESO + postp
         - understands meaning of the symbols
         - add long IKA pattern
         - add IKAN pattern
         - add few words into userdic
+        - more MASU formal to casual pattern
+        - more lovely ebi accent
 
 0.05  Tue Dec 14 03:44:57 JST 2010
         - 0 but ture bugfix
