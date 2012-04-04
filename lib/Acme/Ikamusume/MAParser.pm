@@ -11,7 +11,8 @@ sub parse {
     shift->SUPER::parse($encoding->encode(@_));
 }
 
-package Text::MeCab::Node;
+package    # hide from the PAUSE indexer
+  Text::MeCab::Node;
 
 {
     no strict 'refs';
