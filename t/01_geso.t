@@ -330,10 +330,11 @@ __DATA__
 --- expected: （ふむふむでゲソ）
 === GESO: eos + 記号（一般GESO可）
 --- input:    なんと？　ああ　びっくり！
---- expected: なんとでゲソ？　ああでゲソ　びっくりでゲソ！
+--- expected: なんとでゲソ？　ああ　びっくりでゲソ！
 === GESO: eos + 記号（一般GESO可）
 --- input:    ふむふむ…ふむふむ‥ふむふむ～
 --- expected: ふむふむでゲソ…ふむふむでゲソ‥ふむふむでゲソ～
+--- SKIP
 === GESO: eos + 記号（一般GESO可）
 --- input:    キャー☆　キャー★
 --- expected: キャーでゲソ☆　キャーでゲソ★
@@ -410,8 +411,8 @@ __DATA__
 
 
 === EBI: accent
---- input: 海老蔵が入院した
---- match: 海老.+蔵が入院した
+--- input: 海老蔵が襲名した
+--- match: 海老.+蔵が襲名した
 === EBI: accent
 --- input: えびな市
 --- match: えび.+な市
@@ -422,6 +423,7 @@ __DATA__
 --- reportby: http://twitter.com/Yuichirou/status/13872045712482306
 --- input: 名古屋と言えばエビフリャー
 --- match: 名古屋と言えばエビ.+フリャー
+--- SKIP
 
 
 === formal MASU 基本形 to casual 五段
