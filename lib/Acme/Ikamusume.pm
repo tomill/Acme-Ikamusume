@@ -51,18 +51,15 @@ our @rules = (
     # userdic extra field
     sub {
         my $node = shift;
-        return if not $node->extra;
-        my ($word) = split /,/, $node->extra;
-        if ($word) {
-            $node->text($word);
-        }
+        my $word = $node->extra1 or return;
+        $node->text($word);
     },
 
     # IKA: inflection
     sub {
         my $node = shift;
-        return if not $node->extra;
-        return if not $node->extra =~ /,inflection/;
+        return if not $node->extra2;
+        return if not $node->extra2 =~ /inflection/;
         
         my $prev = $node->prev or return;
         
@@ -288,12 +285,12 @@ Acme::Ikamusume - The invader comes from the bottom of the sea!
   use utf8;
   use Acme::Ikamusume;
 
-  Acme::Ikamusume->geso('イカ娘です。あなたもperlで侵略しませんか？');
+  print Acme::Ikamusume->geso('イカ娘です。あなたもperlで侵略しませんか？');
   # => イカ娘でゲソ。お主もperlで侵略しなイカ？
 
 =head1 DESCRIPTION
 
-Acme::Ikamusume module converts text to Ikamusume like talk.
+Acme::Ikamusume converts Japanese text into like Ikamusume speak.
 Ikamusume, meaning "Squid-Girl", she is a cute Japanese comic/manga
 character (L<http://www.ika-musume.com/>).
 
@@ -303,7 +300,7 @@ Try this module here: L<http://ika.koneta.org/>. enjoy!
 
 =over 4
 
-=item Acme::Ikamusume->geso( $text )
+=item $output = Acme::Ikamusume->geso( $input )
 
 =back
 

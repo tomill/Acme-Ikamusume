@@ -1,6 +1,6 @@
 requires 'perl', '5.010001';
 
-requires 'Text::Mecabist';
+requires 'Text::Mecabist', '0.02';
 
 requires 'Encode';
 requires 'File::ShareDir';

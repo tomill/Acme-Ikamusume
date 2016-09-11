@@ -2,7 +2,7 @@ Revision history for Perl extension Acme::Ikamusume
 
 {{$NEXT}}
         - rewrite with Text::Mecabist
-        - Ikachan forever...
+        - Ikachan forever...!
 
 0.07  Thu Apr  5 11:03:31 JST 2012
         - Hide T::MeCab::Node from pause (ty wchristian)

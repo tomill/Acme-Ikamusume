@@ -45,7 +45,7 @@
             "Encode" : "0",
             "File::ShareDir" : "0",
             "Lingua::JA::Kana" : "0",
-            "Text::Mecabist" : "0",
+            "Text::Mecabist" : "0.02",
             "perl" : "5.010001"
          }
       },

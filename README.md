@@ -7,12 +7,12 @@ Acme::Ikamusume - The invader comes from the bottom of the sea!
     use utf8;
     use Acme::Ikamusume;
 
-    Acme::Ikamusume->geso('イカ娘です。あなたもperlで侵略しませんか？');
+    print Acme::Ikamusume->geso('イカ娘です。あなたもperlで侵略しませんか？');
     # => イカ娘でゲソ。お主もperlで侵略しなイカ？
 
 # DESCRIPTION
 
-Acme::Ikamusume module converts text to Ikamusume like talk.
+Acme::Ikamusume converts Japanese text into like Ikamusume speak.
 Ikamusume, meaning "Squid-Girl", she is a cute Japanese comic/manga
 character ([http://www.ika-musume.com/](http://www.ika-musume.com/)).
 
@@ -20,7 +20,7 @@ Try this module here: [http://ika.koneta.org/](http://ika.koneta.org/). enjoy!
 
 # METHODS
 
-- Acme::Ikamusume->geso( $text )
+- $output = Acme::Ikamusume->geso( $input )
 
 # AUTHOR
 
