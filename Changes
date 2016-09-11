@@ -1,6 +1,8 @@
 Revision history for Perl extension Acme::Ikamusume
 
 {{$NEXT}}
+
+0.08 2016-09-11T09:15:19Z
         - rewrite with Text::Mecabist
         - Ikachan forever...!
 
